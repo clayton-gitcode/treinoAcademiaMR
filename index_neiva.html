@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Treino</title>
+</head>
+<body>
+    <div id="app">
+        <div class="container-lg">
+            <div class="card border-danger m-3 p-3">
+                <div class="card-header">
+                  <h5 class="card-title text-center text-danger">Treino Personalizado</h5>
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-muted">Professor: Pablo</p>
+                  <p class="card-text fw-bold">Aluno(a): Neiva Rodrigues</p>
+                </div>
+            </div>
+        </div>
+        <!-- Segunda-Feira -->
+        <div class="d-grid gap-2 p-3 align-items-center">
+        <button @click="divSegunda(botaoSemana='segunda')"
+            :class="teste">Segunda-Feira</button>
+
+        <!-- Em progresso -->
+        <div v-show="showSegunda && treinoEmProgresso.length" class="container-md text-center">
+            <h3 class="p-3">Em progresso</h3>
+                <table class="table table-secondary table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Quadríceps</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in segunda.filter(a=>!a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        <!-- Finalizado -->
+        <div v-show="showSegunda && treinoFinalizado.length" class="container-md text-center">
+            <h3 class="p-3">Finalizado</h3>
+                <table class="table table-success table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Quadríceps</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in segunda.filter(a=>a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        </div>
+
+        <!-- Terça-Feira -->
+        <div class="d-grid gap-2 p-3 align-items-center">
+            <button @click="divTerca(botaoSemana='terca')"
+                class="btn btn-danger btn-lg">Terça-Feira</button>
+
+        <!-- Em progresso -->
+        <div v-show="showTerca && treinoEmProgresso.length" class="container-md text-center">
+            <h3 class="p-3">Em progresso</h3>
+                <table class="table table-secondary table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Costas bíceps</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in terca.filter(a=>!a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        <!-- Finalizado -->
+        <div v-show="showTerca && treinoFinalizado.length" class="container-md text-center">
+            <h3 class="p-3">Finalizado</h3>
+                <table class="table table-success table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Costas bíceps</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in terca.filter(a=>a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        </div>
+
+        <!-- Quarta-Feira -->
+        <div class="d-grid gap-2 p-3 align-items-center">
+            <button @click="divQuarta(botaoSemana='quarta')"
+                class="btn btn-danger btn-lg">Quarta-Feira</button>
+
+        <!-- Em progresso -->
+        <div v-show="showQuarta && treinoEmProgresso.length" class="container-md text-center">
+            <h3 class="p-3">Em progresso</h3>
+                <table class="table table-secondary table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Posterior</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in quarta.filter(a=>!a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        <!-- Finalizado -->
+        <div v-show="showQuarta && treinoFinalizado.length" class="container-md text-center">
+            <h3 class="p-3">Finalizado</h3>
+                <table class="table table-success table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Posterior</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in quarta.filter(a=>a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        </div>
+
+        <!-- Quinta-Feira -->
+        <div class="d-grid gap-2 p-3 align-items-center">
+            <button @click="divQuinta(botaoSemana='quinta')"
+                class="btn btn-danger btn-lg">Quinta-Feira</button>
+
+        <!-- Em progresso -->
+        <div v-show="showQuinta && treinoEmProgresso.length" class="container-md text-center">
+            <h3 class="p-3">Em progresso</h3>
+                <table class="table table-secondary table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Peito + Triceps + Ombro</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in quinta.filter(a=>!a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        <!-- Finalizado -->
+        <div v-show="showQuinta && treinoFinalizado.length" class="container-md text-center">
+            <h3 class="p-3">Finalizado</h3>
+                <table class="table table-success table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Peito + Triceps + Ombro</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in quinta.filter(a=>a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        </div>
+
+        <!-- Sexta-Feira -->
+        <div class="d-grid gap-2 p-3 align-items-center">
+            <button @click="divSexta(botaoSemana='sexta')"
+                class="btn btn-danger btn-lg">Sexta-Feira</button>
+
+        <!-- Em progresso -->
+        <div v-show="showSexta && treinoEmProgresso.length" class="container-md text-center">
+            <h3 class="p-3">Em progresso</h3>
+                <table class="table table-secondary table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Glúteo</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in sexta.filter(a=>!a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        <!-- Finalizado -->
+        <div v-show="showSexta && treinoFinalizado.length" class="container-md text-center">
+            <h3 class="p-3">Finalizado</h3>
+                <table class="table table-success table-striped table-bordered border-light">
+                <thead>
+                    <tr>
+                    <th scope="col" class="bg-danger text-light">Glúteo</th>
+                    <th scope="col" class="bg-dark text-light">Séries</th>
+                    <th scope="col" class="bg-dark text-light">Rep.</th>
+                    <th scope="col" class="bg-dark text-light">Feito</th>
+                    </tr>
+                </thead>
+
+                <tbody v-for="exerc in sexta.filter(a=>a.complete)" :key="exerc" >
+                    <tr>
+                        <td>{{exerc.name}}</td>
+                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.rep}}</td>
+                        <td>
+                        <label>
+                            <input type="checkbox" v-model="exerc.complete">
+                        </label>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        </div>
+    </div>
+
+   <script>
+    let app = {
+        data(){
+            return{
+                teste: 'btn btn-danger btn-lg',
+                showSegunda: false,
+                showTerca: false,
+                showQuarta: false,
+                showQuinta: false,
+                showSexta: false,
+                botaoSemana: 0,
+                segunda:[
+                    {name: 'Agachamento smith', serie: '5x', rep: '12', complete: false},
+                    {name: 'Cadeira extensora + Cadeira chinesa', serie: '5x', rep: '10', complete: false},
+                    {name: 'Cadeira abdutora', serie: '4x', rep: '20', complete: false},
+                    {name: 'Agachamento taça', serie: '4x', rep: '12', complete: false},
+                    {name: 'Panturrilha sentada', serie: '4x', rep: '20', complete: false},
+                ],
+                terca:[
+                    {name: 'Puxada Frontal', serie: '4x', rep: '15', complete: false},
+                    {name: 'Remada sentada', serie: '4x', rep: '12', complete: false},
+                    {name: 'Face Pull', serie: '4x', rep: '15', complete: false},
+                    {name: 'Voador inverso', serie: '4x', rep: '12', complete: false},
+                    {name: 'Remada alta', serie: '4x', rep: '15', complete: false},
+                    {name: 'Rosca Scott + Rosca Martelo', serie: '4x', rep: '12', complete: false},
+                ],
+                quarta:[
+                    { name: "Leg 45", serie: '4x', rep: '15',  complete: false },
+                    { name: "Mesa Flexora", serie: '4x', rep: '15',  complete: false },
+                    { name: "Cadeira adutora", serie: '4x', rep: '12', complete: false },
+                    { name: "God Morning", serie: '4x', rep: '15',  complete: false },
+                    { name: "Flexora Unilateral", serie: '4x', rep: '12', complete: false },
+                    { name: "Stiff Halter", serie: '4x', rep: '10', complete: false },
+                    { name: "Flexão plante em pé", serie: '3x', rep: '25', complete: false },
+                ],
+                quinta:[
+                    { name: "Supino articulado", serie: '4x', rep: '12', complete: false },
+                    { name: "Voador", serie: '4x', rep: '15', complete: false },
+                    { name: "Elevação Lateral", serie: '4x', rep: '12', complete: false },
+                    { name: "Desenvolimento", serie: '4x', rep: '12', complete: false },
+                    { name: "Triceps corda", serie: '4x', rep: '15',complete: false },
+                    { name: "Triceps Testa + Mergulho", serie: '4x', rep: '10' , complete: false},
+                ],
+                sexta:[
+                    { name: "Elevação pélvica unilateral", serie: '3x', rep: '20', complete: false },
+                    { name: "Elevção máquina bi", serie: '4x', rep: '12', complete: false },
+                    { name: "sumô máquina", serie: '4x', rep: '15', complete: false },
+                    { name: "Coice polia/Caneleira", serie: '4x', rep: '12', complete: false },
+                    { name: "Step up", serie: '4x', rep: '12',complete: false },
+                    { name: "Bulgaro", serie: '4x', rep: '10' , complete: false},
+                ]
+            }
+        },
+
+        computed:{
+            treinoEmProgresso(){
+
+                switch(this.botaoSemana){
+                    case 'segunda': return this.segunda.filter(exerc=>!exerc.complete)
+                    case 'terca': return this.terca.filter(exerc=>!exerc.complete)
+                    case 'quarta': return this.quarta.filter(exerc=>!exerc.complete)
+                    case 'quinta': return this.quinta.filter(exerc=>!exerc.complete)
+                    case 'sexta': return this.sexta.filter(exerc=>!exerc.complete)
+                    default: 0
+                }
+            },
+            treinoFinalizado(){
+                
+                switch(this.botaoSemana){
+                    case 'segunda': return this.segunda.filter(exerc=>exerc.complete)
+                    case 'terca': return this.terca.filter(exerc=>exerc.complete)
+                    case 'quarta': return this.quarta.filter(exerc=>exerc.complete)
+                    case 'quinta': return this.quinta.filter(exerc=>exerc.complete)
+                    case 'sexta': return this.sexta.filter(exerc=>exerc.complete)
+                    default: 0
+                }
+            }
+        },
+
+        methods:{
+            divSegunda(){
+                this.showSegunda = !this.showSegunda
+            },
+            divTerca(){
+                this.showTerca = !this.showTerca
+            },
+            divQuarta(){
+                this.showQuarta = !this.showQuarta
+            },
+            divQuinta(){
+                this.showQuinta = !this.showQuinta
+            },
+            divSexta(){
+                this.showSexta = !this.showSexta
+            }
+        }
+    };
+    Vue.createApp(app).mount('#app')
+   </script>
+</body>
+</html>
