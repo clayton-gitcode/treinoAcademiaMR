@@ -12,6 +12,7 @@
 </head>
 <body>
     <div id="app">
+        <!-- Banner -->
         <div class="container-lg">
             <div :class="trocarCorBorda">
                 <div class="card-header">
@@ -31,13 +32,15 @@
         <!-- Em progresso -->
         <div v-show="showSegunda && treinoEmProgresso.length" class="container-md text-center">
             <h3 class="p-3">
-                Em progresso
+                {{ modoTreino }}
+
+                <!-- Cronometro -->
                 <button @click="startClock()" :class="desativaBotaoCron">
                     <span class="material-icons">
                         timer
                     </span>
                 </button>
-                <!-- Cronometro -->
+                
                 <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
             </h3>
 
@@ -102,7 +105,18 @@
 
         <!-- Em progresso -->
         <div v-show="showTerca && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">Em progresso</h3>
+            <h3 class="p-3">
+                {{ modoTreino }}
+                
+                <!-- Cronometro -->
+                <button @click="startClock()" :class="desativaBotaoCron">
+                    <span class="material-icons">
+                        timer
+                    </span>
+                </button>
+                
+                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+            </h3>
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
@@ -163,7 +177,18 @@
 
         <!-- Em progresso -->
         <div v-show="showQuarta && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">Em progresso</h3>
+            <h3 class="p-3">
+                {{ modoTreino }}
+
+                <!-- Cronometro -->
+                <button @click="startClock()" :class="desativaBotaoCron">
+                    <span class="material-icons">
+                        timer
+                    </span>
+                </button>
+                
+                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+            </h3>
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
@@ -224,7 +249,18 @@
 
         <!-- Em progresso -->
         <div v-show="showQuinta && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">Em progresso</h3>
+            <h3 class="p-3">
+                {{ modoTreino }}
+            
+                <!-- Cronometro -->
+                <button @click="startClock()" :class="desativaBotaoCron">
+                    <span class="material-icons">
+                        timer
+                    </span>
+                </button>
+                
+                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+            </h3>
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
@@ -294,7 +330,8 @@
     let app = {
         data(){
             return{
-                desativaBotaoCron: "btn btn-lg border-dark",
+                modoTreino: "Em Progresso",
+                desativaBotaoCron: 'btn btn-lg border-dark',
                 cronometro: false,
                 seconds: 30,
                 intervalo: null,
@@ -373,6 +410,7 @@
 
         methods:{
             startClock(){
+                this.modoTreino = "Em descanso..."
                 this.desativaBotaoCron = "btn border-dark disabled"
                 this.cronometro = true
                 this.intervalo = setInterval(() => {
@@ -384,6 +422,7 @@
                         this.desativaBotaoCron = "btn border-dark"
                         this.cronometro = false
                         this.seconds = 30
+                        this.modoTreino = "Em Progesso"
                     }
                 }, 1000);
             },

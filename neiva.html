@@ -4,37 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="estilo.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <script src="https://unpkg.com/vue@3"></script>
-    <title>Treino</title>
+    <title>Mr. Fitnes</title>
 </head>
 <body>
     <div id="app">
+        <!-- Banner -->
         <div class="container-lg">
-            <div class="card border-danger m-3 p-3">
+            <div :class="trocarCorBorda">
                 <div class="card-header">
-                  <h5 class="card-title text-center text-danger">Treino Personalizado</h5>
+                  <h5 :class="trocarCorTitulo">Treino Personalizado</h5>
                 </div>
                 <div class="card-body">
                   <p class="card-text text-muted">Professor: Pablo</p>
-                  <p class="card-text fw-bold">Aluno(a): Neiva Rodrigues</p>
+                  <p :class="trocarCorNomeAluno">Aluno: Neiva Rodrigues</p>
                 </div>
             </div>
         </div>
         <!-- Segunda-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
         <button @click="divSegunda(botaoSemana='segunda')"
-            :class="teste">Segunda-Feira</button>
+            :class="trocarCorBotao">Segunda-Feira</button>
 
         <!-- Em progresso -->
         <div v-show="showSegunda && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">Em progresso</h3>
+            <h3 class="p-3">
+                {{ modoTreino }}
+
+                <!-- Cronometro -->
+                <button @click="startClock()" :class="desativaBotaoCron">
+                    <span class="material-icons">
+                        timer
+                    </span>
+                </button>
+                
+                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+            </h3>
+
+            <!-- Table Segunda -->
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Quadríceps</th>
+                    <th scope="col" :class="trocarCorTable">Pernas</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -61,7 +75,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Quadríceps</th>
+                    <th scope="col" :class="trocarCorTable">Pernas</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -87,15 +101,26 @@
         <!-- Terça-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
             <button @click="divTerca(botaoSemana='terca')"
-                class="btn btn-danger btn-lg">Terça-Feira</button>
+                :class="trocarCorBotao">Terça-Feira</button>
 
         <!-- Em progresso -->
         <div v-show="showTerca && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">Em progresso</h3>
+            <h3 class="p-3">
+                {{ modoTreino }}
+                
+                <!-- Cronometro -->
+                <button @click="startClock()" :class="desativaBotaoCron">
+                    <span class="material-icons">
+                        timer
+                    </span>
+                </button>
+                
+                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+            </h3>
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Costas bíceps</th>
+                    <th scope="col" :class="trocarCorTable">Costas</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -122,7 +147,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Costas bíceps</th>
+                    <th scope="col" :class="trocarCorTable">Costas</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -148,15 +173,26 @@
         <!-- Quarta-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
             <button @click="divQuarta(botaoSemana='quarta')"
-                class="btn btn-danger btn-lg">Quarta-Feira</button>
+                :class="trocarCorBotao">Quarta-Feira</button>
 
         <!-- Em progresso -->
         <div v-show="showQuarta && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">Em progresso</h3>
+            <h3 class="p-3">
+                {{ modoTreino }}
+
+                <!-- Cronometro -->
+                <button @click="startClock()" :class="desativaBotaoCron">
+                    <span class="material-icons">
+                        timer
+                    </span>
+                </button>
+                
+                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+            </h3>
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Posterior</th>
+                    <th scope="col" :class="trocarCorTable">Pernas Posterior</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -166,7 +202,7 @@
                 <tbody v-for="exerc in quarta.filter(a=>!a.complete)" :key="exerc" >
                     <tr>
                         <td>{{exerc.name}}</td>
-                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.serie}}</td>
                         <td>{{exerc.rep}}</td>
                         <td>
                         <label>
@@ -183,7 +219,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Posterior</th>
+                    <th scope="col" :class="trocarCorTable">Pernas Posterior</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -193,7 +229,7 @@
                 <tbody v-for="exerc in quarta.filter(a=>a.complete)" :key="exerc" >
                     <tr>
                         <td>{{exerc.name}}</td>
-                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.serie}}</td>
                         <td>{{exerc.rep}}</td>
                         <td>
                         <label>
@@ -209,15 +245,26 @@
         <!-- Quinta-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
             <button @click="divQuinta(botaoSemana='quinta')"
-                class="btn btn-danger btn-lg">Quinta-Feira</button>
+                :class="trocarCorBotao">Quinta-Feira</button>
 
         <!-- Em progresso -->
         <div v-show="showQuinta && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">Em progresso</h3>
+            <h3 class="p-3">
+                {{ modoTreino }}
+            
+                <!-- Cronometro -->
+                <button @click="startClock()" :class="desativaBotaoCron">
+                    <span class="material-icons">
+                        timer
+                    </span>
+                </button>
+                
+                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+            </h3>
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Peito + Triceps + Ombro</th>
+                    <th scope="col" :class="trocarCorTable">Peito + Triceps + Ombro</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -227,7 +274,7 @@
                 <tbody v-for="exerc in quinta.filter(a=>!a.complete)" :key="exerc" >
                     <tr>
                         <td>{{exerc.name}}</td>
-                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.serie}}</td>
                         <td>{{exerc.rep}}</td>
                         <td>
                         <label>
@@ -244,7 +291,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Peito + Triceps + Ombro</th>
+                    <th scope="col" :class="trocarCorTable">BÍCEPS + TRÍCEPS</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -254,7 +301,7 @@
                 <tbody v-for="exerc in quinta.filter(a=>a.complete)" :key="exerc" >
                     <tr>
                         <td>{{exerc.name}}</td>
-                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.serie}}</td>
                         <td>{{exerc.rep}}</td>
                         <td>
                         <label>
@@ -270,15 +317,26 @@
         <!-- Sexta-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
             <button @click="divSexta(botaoSemana='sexta')"
-                class="btn btn-danger btn-lg">Sexta-Feira</button>
+                :class="trocarCorBotao">Sexta-Feira</button>
 
         <!-- Em progresso -->
         <div v-show="showSexta && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">Em progresso</h3>
+            <h3 class="p-3">
+                {{ modoTreino }}
+            
+                <!-- Cronometro -->
+                <button @click="startClock()" :class="desativaBotaoCron">
+                    <span class="material-icons">
+                        timer
+                    </span>
+                </button>
+                
+                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+            </h3>
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Glúteo</th>
+                    <th scope="col" :class="trocarCorTable">Glúteos</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -288,7 +346,7 @@
                 <tbody v-for="exerc in sexta.filter(a=>!a.complete)" :key="exerc" >
                     <tr>
                         <td>{{exerc.name}}</td>
-                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.serie}}</td>
                         <td>{{exerc.rep}}</td>
                         <td>
                         <label>
@@ -305,7 +363,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" class="bg-danger text-light">Glúteo</th>
+                    <th scope="col" :class="trocarCorTable">Glúteos</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -315,7 +373,7 @@
                 <tbody v-for="exerc in sexta.filter(a=>a.complete)" :key="exerc" >
                     <tr>
                         <td>{{exerc.name}}</td>
-                        <td>{{exerc.serie}}x</td>
+                        <td>{{exerc.serie}}</td>
                         <td>{{exerc.rep}}</td>
                         <td>
                         <label>
@@ -327,13 +385,33 @@
                 </table>
         </div>
         </div>
+
+        <!-- trocar cores -->
+        <div class="d-grid p-3 align-items-center">
+            <hr>
+            <div class="btn-group" role="group">
+                <button @click="corVerde()" class="btn btn-success rounded-5 m-1">Verde</button>
+                <button @click="corDanger()" class="btn btn-danger rounded-5 m-1">Vermelho</button>
+                <button @click="corWarning()" class="btn btn-warning rounded-5 m-1">Amarelo</button>
+                <button @click="corDark()" class="btn btn-dark rounded-5 m-1">Preto</button>
+            </div>
+        </div>
     </div>
 
    <script>
     let app = {
         data(){
             return{
-                teste: 'btn btn-danger btn-lg',
+                modoTreino: "Em Progresso",
+                desativaBotaoCron: 'btn btn-lg border-dark',
+                cronometro: false,
+                seconds: 30,
+                intervalo: null,
+                trocarCorBotao: 'btn btn-danger btn-lg',
+                trocarCorBorda: 'card border-danger m-3 p-3',
+                trocarCorTitulo: 'card-title text-danger text-center',
+                trocarCorNomeAluno: 'card-text text-danger',
+                trocarCorTable: 'bg-danger text-light',
                 showSegunda: false,
                 showTerca: false,
                 showQuarta: false,
@@ -409,6 +487,51 @@
         },
 
         methods:{
+            startClock(){
+                this.modoTreino = "Em descanso..."
+                this.desativaBotaoCron = "btn border-dark disabled"
+                this.cronometro = true
+                this.intervalo = setInterval(() => {
+                    if(this.seconds > 0){
+                        this.seconds--;
+                    }
+                    else{
+                        clearInterval(this.intervalo)
+                        this.desativaBotaoCron = "btn border-dark"
+                        this.cronometro = false
+                        this.seconds = 30
+                        this.modoTreino = "Em Progesso"
+                    }
+                }, 1000);
+            },
+            corVerde(){
+                this.trocarCorBotao = 'btn btn-success btn-lg'
+                this.trocarCorBorda = 'card border-success m-3 p-3'
+                this.trocarCorTitulo = 'card-title text-success text-center'
+                this.trocarCorNomeAluno= 'card-text text-success'
+                this.trocarCorTable= 'bg-success text-light'
+            },
+            corDanger(){
+                this.trocarCorBotao = 'btn btn-danger btn-lg'
+                this.trocarCorBorda = 'card border-danger m-3 p-3'
+                this.trocarCorTitulo = 'card-title text-danger text-center'
+                this.trocarCorNomeAluno= 'card-text text-danger'
+                this.trocarCorTable= 'bg-danger text-light'
+            },
+            corWarning(){
+                this.trocarCorBotao = 'btn btn-warning btn-lg'
+                this.trocarCorBorda = 'card border-warning m-3 p-3'
+                this.trocarCorTitulo = 'card-title text-warning text-center'
+                this.trocarCorNomeAluno= 'card-text text-warning'
+                this.trocarCorTable= 'bg-warning text-dark'
+            },
+            corDark(){
+                this.trocarCorBotao = 'btn btn-dark btn-lg'
+                this.trocarCorBorda = 'card border-dark m-3 p-3'
+                this.trocarCorTitulo = 'card-title text-dark text-center'
+                this.trocarCorNomeAluno= 'card-text text-dark'
+                this.trocarCorTable= 'bg-dark text-light'
+            },
             divSegunda(){
                 this.showSegunda = !this.showSegunda
             },
