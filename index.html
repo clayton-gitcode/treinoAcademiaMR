@@ -27,7 +27,7 @@
         <!-- Segunda-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
         <button @click="divSegunda(botaoSemana='segunda')"
-            :class="trocarCorBotao">Segunda-Feira</button>
+            :class="trocarCorBotao">TREINO 1</button>
 
         <!-- Em progresso -->
         <div v-show="showSegunda && treinoEmProgresso.length" class="container-md text-center">
@@ -101,7 +101,7 @@
         <!-- Terça-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
             <button @click="divTerca(botaoSemana='terca')"
-                :class="trocarCorBotao">Terça-Feira</button>
+                :class="trocarCorBotao">TREINO 2</button>
 
         <!-- Em progresso -->
         <div v-show="showTerca && treinoEmProgresso.length" class="container-md text-center">
@@ -173,7 +173,7 @@
         <!-- Quarta-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
             <button @click="divQuarta(botaoSemana='quarta')"
-                :class="trocarCorBotao">Quarta-Feira</button>
+                :class="trocarCorBotao">TREINO 3</button>
 
         <!-- Em progresso -->
         <div v-show="showQuarta && treinoEmProgresso.length" class="container-md text-center">
@@ -245,7 +245,7 @@
         <!-- Quinta-Feira -->
         <div class="d-grid gap-2 p-3 align-items-center">
             <button @click="divQuinta(botaoSemana='quinta')"
-                :class="trocarCorBotao">Quinta-Feira</button>
+                :class="trocarCorBotao">TREINO 4</button>
 
         <!-- Em progresso -->
         <div v-show="showQuinta && treinoEmProgresso.length" class="container-md text-center">
@@ -333,7 +333,7 @@
                 modoTreino: "Em Progresso",
                 desativaBotaoCron: 'btn btn-lg border-dark',
                 cronometro: false,
-                seconds: 30,
+                seconds: 60,
                 intervalo: null,
                 trocarCorBotao: 'btn btn-success btn-lg',
                 trocarCorBorda: 'card border-success m-3 p-3',
@@ -346,41 +346,34 @@
                 showQuinta: false,
                 botaoSemana: 0,
                 segunda:[
-                    {name: 'Puxada aberta', serie: '5x', rep: '12', complete: false},
-                    {name: 'Pulldown com Corda	', serie: '4x', rep: '10', complete: false},
-                    {name: 'Remada Curvada com Barra Reta', serie: '4x', rep: '12', complete: false},
-                    {name: 'Remada baixa triângulo', serie: '5x', rep: '10', complete: false},
-                    {name: 'Remada articulada unilateral', serie: '4x', rep: '10', complete: false},
-                    {name: 'Encolhimento de ombro com Halteres', serie: '4x', rep: '20', complete: false},
-                    {name: 'Remada alta', serie: '4x', rep: '15', complete: false}
+                    {name: 'Agachamento Smith', serie: '4x', rep: '12', complete: false},
+                    {name: 'Leg', serie: '4x', rep: '12', complete: false},
+                    {name: 'Extensora ', serie: '4x', rep: '12', complete: false},
+                    {name: 'Rosca Direta Polia', serie: '4x', rep: '12', complete: false},
+                    {name: 'Rosca Alternada', serie: '4x', rep: '12', complete: false}
                 ],
                 terca:[
-                    {name: 'Supino reto barra ou Halteres', serie: '5x', rep: '10', complete: false},
-                    {name: 'Supino inclinado 45 + Crucifixo', serie: '4x', rep: '10', complete: false},
-                    {name: 'Peck Deck', serie: '4x', rep: '10', complete: false},
-                    {name: 'Cross Over polia baixa', serie: '4x', rep: '10', complete: false},
-                    {name: 'Desenvolvimento maquina', serie: '5x', rep: '12', complete: false},
-                    {name: 'Elevação lateral maquina', serie: '4x', rep: '10', complete: false},
-                    {name: 'Elevação frontal na polia', serie: '4x', rep: '10', complete: false},
+                    {name: 'Supino Reto', serie: '4x', rep: '12', complete: false},
+                    {name: 'Supino Inclinado', serie: '4x', rep: '12', complete: false},
+                    {name: 'Cross Over', serie: '4x', rep: '12', complete: false},
+                    {name: 'Desenvolvimento ', serie: '4x', rep: '12', complete: false},
+                    {name: 'Elevação Lateral Completa', serie: '4x', rep: '12', complete: false}
                 ],
                 quarta:[
-                    { name: "Agachamento Livre", serie: 5, rep: 10,  complete: false },
-                    { name: "Cadeira extensora + afundo", serie: 4, rep: 10,  complete: false },
-                    { name: "Leg press 45", serie: 4, rep: 12, complete: false },
-                    { name: "Cadeira flexora", serie: 5, rep: 12,  complete: false },
-                    { name: "Adução + Mesa Flexora", serie: 4, rep: 15, complete: false },
-                    { name: "Levantamento Terra", serie: 4, rep: 10, complete: false },
-                    { name: "Panturrilha sentado + em pé", serie: 4, rep: 15, complete: false },
+                    { name: "Agachamento Búlgaro", serie: 4, rep: 12,  complete: false },
+                    { name: "Mesa Flexora", serie: 4, rep: 12,  complete: false },
+                    { name: "Stiff", serie: 4, rep: 12, complete: false },
+                    { name: "Panturrilha", serie: 4, rep: 12,  complete: false },
+                    { name: "Tríceps Testa Polia", serie: 4, rep: 12, complete: false },
+                    { name: "Tríceps Frances", serie: 4, rep: 12, complete: false }
                 ],
                 quinta:[
-                    { name: "Rosca Direta Barra W", serie: 4, rep: 10, complete: false },
-                    { name: "Rosca alternada banco 45", serie: 3, rep: 12, complete: false },
-                    { name: "Rosca Scott Máquina", serie: 4, rep: 12, complete: false },
-                    { name: "Rosca Martelo + Rosca Inversa Halteres", serie: 4, rep: 10, complete: false },
-                    { name: "Triceps Barra no Pulley", serie: 4, rep: 10,complete: false },
-                    { name: "Triceps Testa com Barra reta", serie: 4, rep: 12 , complete: false},
-                    { name: "Triceps Francês na Polia com Corda", serie: 4, rep: 12, complete: false },
-                    { name: "Triceps Coice unilateral", serie: 4, rep: 10, complete: false }
+                    { name: "Remada Baixa", serie: 4, rep: 12, complete: false },
+                    { name: "Remada Cavalo", serie: 4, rep: 12, complete: false },
+                    { name: "Puxada Aberta", serie: 4, rep: 12, complete: false },
+                    { name: "PullDown", serie: 4, rep: 12, complete: false },
+                    { name: "Voador Inverso", serie: 4, rep: 12,complete: false },
+                    { name: "Remada Alta", serie: 4, rep: 12 , complete: false}
                 ]
             }
         },
@@ -421,7 +414,7 @@
                         clearInterval(this.intervalo)
                         this.desativaBotaoCron = "btn border-dark"
                         this.cronometro = false
-                        this.seconds = 30
+                        this.seconds = 60
                         this.modoTreino = "Em Progesso"
                     }
                 }, 1000);
