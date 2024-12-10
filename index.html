@@ -37,9 +37,7 @@
                         
                         <div class="row align-items-center">
                           <div class="col">
-                            <h6 class="">
-                                {{ modoTreino }}
-                            </h6>
+                            <h6>{{ modoTreino }}</h6>
                             <!-- Cronometro -->
                             <button @click="startClock()" :class="desativaBotaoCron">
                                 <span class="material-icons">
@@ -50,7 +48,17 @@
                           </div>
                           
                           <div class="col">
-                            One of three columns
+                            <h6>Count</h6>
+                            <!-- Contador -->
+                             <button @click="contadorSeries()" 
+                             class="btn border-dark">
+                                <div class="h3">
+                                    <span class="material-icons">
+                                        fitness_center
+                                    </span>
+                                    {{contador}}
+                                </div>
+                             </button>
                           </div>
                         </div>
 
@@ -364,6 +372,7 @@
     let app = {
         data(){
             return{
+                contador: 0,
                 modoTreino: "Em Progresso",
                 desativaBotaoCron: 'btn btn-lg border-dark',
                 cronometro: false,
@@ -436,6 +445,13 @@
         },
 
         methods:{
+            contadorSeries(){
+                this.contador=this.contador+1;
+
+                if(this.contador == 6){
+                    this.contador = 0;
+                }
+            },
             startClock(){
                 this.modoTreino = "Em descanso..."
                 this.desativaBotaoCron = "btn border-dark disabled"
