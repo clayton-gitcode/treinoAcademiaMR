@@ -40,10 +40,12 @@
                             <h6>{{ modoTreino }}</h6>
                             <!-- Cronometro -->
                             <button @click="startClock()" :class="desativaBotaoCron">
-                                <span class="material-icons">
-                                    timer
-                                </span>
-                                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
+                                <div class="h3">
+                                    <span class="material-icons">
+                                        timer
+                                    </span>
+                                    {{ seconds }}
+                                </div>
                             </button>
                           </div>
                           
@@ -56,7 +58,7 @@
                                     <span class="material-icons">
                                         fitness_center
                                     </span>
-                                    {{contador}}
+                                    = {{contador}}
                                 </div>
                              </button>
                           </div>
@@ -73,18 +75,7 @@
 
         <!-- Em progresso -->
         <div v-show="showSegunda && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">
-                {{ modoTreino }}
-
-                <!-- Cronometro -->
-                <button @click="startClock()" :class="desativaBotaoCron">
-                    <span class="material-icons">
-                        timer
-                    </span>
-                </button>
-                
-                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
-            </h3>
+            
 
             <!-- Table Segunda -->
                 <table class="table table-secondary table-striped table-bordered border-light">
@@ -147,18 +138,7 @@
 
         <!-- Em progresso -->
         <div v-show="showTerca && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">
-                {{ modoTreino }}
-                
-                <!-- Cronometro -->
-                <button @click="startClock()" :class="desativaBotaoCron">
-                    <span class="material-icons">
-                        timer
-                    </span>
-                </button>
-                
-                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
-            </h3>
+            
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
@@ -219,18 +199,7 @@
 
         <!-- Em progresso -->
         <div v-show="showQuarta && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">
-                {{ modoTreino }}
-
-                <!-- Cronometro -->
-                <button @click="startClock()" :class="desativaBotaoCron">
-                    <span class="material-icons">
-                        timer
-                    </span>
-                </button>
-                
-                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
-            </h3>
+            
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
@@ -291,18 +260,7 @@
 
         <!-- Em progresso -->
         <div v-show="showQuinta && treinoEmProgresso.length" class="container-md text-center">
-            <h3 class="p-3">
-                {{ modoTreino }}
             
-                <!-- Cronometro -->
-                <button @click="startClock()" :class="desativaBotaoCron">
-                    <span class="material-icons">
-                        timer
-                    </span>
-                </button>
-                
-                <div v-if="cronometro" :class="trocarCorTitulo">{{ seconds }}</div>
-            </h3>
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
@@ -373,8 +331,8 @@
         data(){
             return{
                 contador: 0,
-                modoTreino: "Em Progresso",
-                desativaBotaoCron: 'btn btn-lg border-dark',
+                modoTreino: "Clock",
+                desativaBotaoCron: 'btn btn-lg border-dark p-2',
                 cronometro: false,
                 seconds: 60,
                 intervalo: null,
@@ -453,8 +411,8 @@
                 }
             },
             startClock(){
-                this.modoTreino = "Em descanso..."
-                this.desativaBotaoCron = "btn border-dark disabled"
+                this.modoTreino = "descanso..."
+                this.desativaBotaoCron = "btn border-dark disabled p-2"
                 this.cronometro = true
                 this.intervalo = setInterval(() => {
                     if(this.seconds > 0){
@@ -462,10 +420,10 @@
                     }
                     else{
                         clearInterval(this.intervalo)
-                        this.desativaBotaoCron = "btn border-dark"
+                        this.desativaBotaoCron = "btn btn-lg border-dark p-2"
                         this.cronometro = false
                         this.seconds = 60
-                        this.modoTreino = "Em Progesso"
+                        this.modoTreino = "Clock"
                     }
                 }, 1000);
             },
