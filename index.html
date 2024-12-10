@@ -81,7 +81,7 @@
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" :class="trocarCorTable">Costas + Trap</th>
+                    <th scope="col" :class="trocarCorTable">{{treino[0]}}</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -108,7 +108,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" :class="trocarCorTable">Costas + Trap</th>
+                    <th scope="col" :class="trocarCorTable">{{treino[0]}}</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -142,7 +142,7 @@
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" :class="trocarCorTable">Peito + Deltoide</th>
+                    <th scope="col" :class="trocarCorTable">{{treino[1]}}</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -169,7 +169,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" :class="trocarCorTable">Peito + Deltoide</th>
+                    <th scope="col" :class="trocarCorTable">{{treino[1]}}</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -203,7 +203,7 @@
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" :class="trocarCorTable">Perna completo</th>
+                    <th scope="col" :class="trocarCorTable">{{treino[2]}}</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -230,7 +230,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" :class="trocarCorTable">Perna completo</th>
+                    <th scope="col" :class="trocarCorTable">{{treino[2]}}</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -264,7 +264,7 @@
                 <table class="table table-secondary table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" :class="trocarCorTable">BÍCEPS + TRÍCEPS</th>
+                    <th scope="col" :class="trocarCorTable">{{treino[3]}}</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -291,7 +291,7 @@
                 <table class="table table-success table-striped table-bordered border-light">
                 <thead>
                     <tr>
-                    <th scope="col" :class="trocarCorTable">BÍCEPS + TRÍCEPS</th>
+                    <th scope="col" :class="trocarCorTable">{{treino[3]}}</th>
                     <th scope="col" class="bg-dark text-light">Séries</th>
                     <th scope="col" class="bg-dark text-light">Rep.</th>
                     <th scope="col" class="bg-dark text-light">Feito</th>
@@ -330,6 +330,12 @@
     let app = {
         data(){
             return{
+                treino:[
+                    treino1="Leg + Bíceps",
+                    treino2="Peito + Ombro",
+                    treino3="Leg Posterior + Tríceps",
+                    treino4="Costas"
+                ],
                 contador: 0,
                 modoTreino: "Clock",
                 desativaBotaoCron: 'btn btn-lg border-dark p-2',
